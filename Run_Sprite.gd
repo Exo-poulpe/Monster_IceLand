@@ -97,7 +97,8 @@ func take_damage(count):
 func get_input(_delta):
 	_animated_sprite.speed_scale = 1;
 	
-	
+	if Input.is_key_pressed(KEY_Q):
+		_on_Ennemie_tuto_die(1)
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
 		velocity.x = 0;
 		_animated_sprite.speed_scale = 0.25;
@@ -157,5 +158,5 @@ func _on_Ennemie_tuto_die(value):
 		elif my_experience > (my_level * my_max_experience):
 			my_experience = my_experience - (my_level * my_max_experience)
 		my_level += 1
-		emit_signal("level_up",my_level)
+		emit_signal("level_up",my_experience,my_max_experience,my_level)
 	emit_signal("exp_up",my_experience)
