@@ -5,6 +5,7 @@ signal die
 onready var _animated_sprite = $AnimatedSprite
 onready var _collision = $CollisionShape2D
 onready var _dialogue = $TextureRect
+onready var _raycast = $RayCast2D
 
 export var job_name : String = "Player"
 export var level : int
@@ -63,6 +64,9 @@ func _process(_delta):
 				count_frame = 0
 		elif mode == MODES.ATTACK:
 			_animated_sprite.play("Attack")
+			var target = _raycast.get_collider()
+			if target != null:
+					target._hited(my_damage)
 		elif mode == MODES.IDLE:
 			_animated_sprite.play("Idle")
 	else:

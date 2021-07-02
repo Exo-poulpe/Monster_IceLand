@@ -150,7 +150,8 @@ func get_input(_delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+func _hited(damage):
+	take_damage(damage)
 
 func _on_Ennemie_tuto_die(value):
 	my_experience += value

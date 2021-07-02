@@ -807,6 +807,10 @@ rect_scale = Vector2( 2.77877, 1.84209 )
 theme = SubResource( 26 )
 text = "Frappe moi pour gagné. Si tu me bats tu gagne des Exp, *Clique gauche* pour tapé"
 
+[node name="RayCast2D" type="RayCast2D" parent="Skeleton_tuto"]
+enabled = true
+cast_to = Vector2( -15, 0 )
+
 [connection signal="Rush" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="Player" method="_on_Skill1_Rush"]
 [connection signal="mouse_entered" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" method="_on_Skill1_mouse_entered"]
 [connection signal="exp_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_exp_up"]
