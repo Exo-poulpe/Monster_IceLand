@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/skye-cuillin-by-kevin-macleod-from-filmmusic-io.mp3-2aadb45be98ae8ea8bb8d59e0a4c2faa.mp3str"
+
+[deps]
+
+source_file="res://Sprite/RPG/Fantasy_project/game/audio/skye-cuillin-by-kevin-macleod-from-filmmusic-io.mp3"
+dest_files=[ "res://.import/skye-cuillin-by-kevin-macleod-from-filmmusic-io.mp3-2aadb45be98ae8ea8bb8d59e0a4c2faa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

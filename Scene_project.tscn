@@ -1,0 +1,737 @@
+[gd_scene load_steps=83 format=2]
+
+[ext_resource path="res://Sprite/[64x64] Rocky Grass.png" type="Texture" id=1]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-03.png" type="Texture" id=2]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-idle-01.png" type="Texture" id=3]
+[ext_resource path="res://Sprite/Life_bar/energy_bar_fill.png" type="Texture" id=4]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-attack2-04.png" type="Texture" id=5]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-attack2-03.png" type="Texture" id=6]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-06.png" type="Texture" id=7]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-02.png" type="Texture" id=8]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-attack2-01.png" type="Texture" id=9]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-02.png" type="Texture" id=10]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-01.png" type="Texture" id=11]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-idle-00.png" type="Texture" id=12]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-05.png" type="Texture" id=13]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-01.png" type="Texture" id=14]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-00.png" type="Texture" id=15]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-03.png" type="Texture" id=16]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-run-04.png" type="Texture" id=17]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-05.png" type="Texture" id=18]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-01.png" type="Texture" id=19]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-02.png" type="Texture" id=20]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-03.png" type="Texture" id=21]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-die-04.png" type="Texture" id=22]
+[ext_resource path="res://Sprite/Final/Assets/Background_2.png" type="Texture" id=23]
+[ext_resource path="res://Run_Sprite.gd" type="Script" id=24]
+[ext_resource path="res://Sprite/Life_bar/lifebar_bg_edit.png" type="Texture" id=25]
+[ext_resource path="res://Sprite/Life_bar/label_HP.png" type="Texture" id=26]
+[ext_resource path="res://Sprite/Life_bar/lifebar_fill.png" type="Texture" id=27]
+[ext_resource path="res://Sprite/Life_bar/label_HP_bg.png" type="Texture" id=28]
+[ext_resource path="res://GUI.gd" type="Script" id=29]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-attack3-00.png" type="Texture" id=30]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-attack3-01.png" type="Texture" id=31]
+[ext_resource path="res://Sprite/RPG/Skeleton/Sprite Sheets/Skeleton Idle.png" type="Texture" id=32]
+[ext_resource path="res://Ennemie.gd" type="Script" id=33]
+[ext_resource path="res://Sprite/RPG/Fantasy_project/game/gui/textbox.png" type="Texture" id=34]
+[ext_resource path="res://Sprite/Life_bar/energy_bar_fill_2.png" type="Texture" id=35]
+[ext_resource path="res://Sprite/RPG/Skeleton/Sprite Sheets/Skeleton Dead.png" type="Texture" id=36]
+[ext_resource path="res://Sprite/RPG/Skeleton/Sprite Sheets/Skeleton Hit.png" type="Texture" id=37]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=33]
+font_path = "res://Sprite/Font/Comfortaa-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=34]
+size = 18
+outline_color = Color( 0.996078, 0.996078, 0.996078, 1 )
+font_data = SubResource( 33 )
+
+[sub_resource type="DynamicFontData" id=47]
+font_path = "res://Sprite/Font/CaslonAntique.ttf"
+
+[sub_resource type="DynamicFont" id=48]
+use_mipmaps = true
+font_data = SubResource( 47 )
+
+[sub_resource type="DynamicFontData" id=49]
+font_path = "res://Sprite/Font/CaslonAntique.ttf"
+
+[sub_resource type="DynamicFont" id=50]
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 49 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=14]
+resource_local_to_scene = true
+0/name = "[64x64] Rocky Grass.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "[64x64] Rocky Grass.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 4 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "[64x64] Rocky Grass.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 128, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 6 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "[64x64] Rocky Grass.png 3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 64, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 7 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "[64x64] Rocky Grass.png 4"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 64, 64, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 8 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "[64x64] Rocky Grass.png 5"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 128, 64, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 9 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "[64x64] Rocky Grass.png 6"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 192, 192, 64, 64 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 10 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "[64x64] Rocky Grass.png 7"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 192, 256, 64, 64 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 11 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "[64x64] Rocky Grass.png 8"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 128, 256, 64, 64 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 12 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "[64x64] Rocky Grass.png 9"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 64, 256, 64, 64 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 13 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+10/name = "[64x64] Rocky Grass.png 10"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 256, 64, 64 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 5 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Air",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "Hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Stop",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 10.1037
+height = 11.5046
+
+[sub_resource type="CapsuleShape2D" id=17]
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 231, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 264, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 297, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 330, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 363, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 396, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 429, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 462, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 37 )
+region = Rect2( 0, 0, 34, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 37 )
+region = Rect2( 30, 0, 30, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 37 )
+region = Rect2( 60, 0, 30, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 462, 0, 33, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 24, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 48, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 72, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 96, 0, 24, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 120, 0, 24, 32 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "Hit",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 43 ) ],
+"loop": true,
+"name": "End",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFontData" id=24]
+font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
+
+[sub_resource type="DynamicFont" id=25]
+size = 22
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 2
+extra_spacing_char = 1
+font_data = SubResource( 24 )
+
+[sub_resource type="Theme" id=26]
+default_font = SubResource( 25 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -2, 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 482, 270 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 23 )
+
+[node name="GUI" type="MarginContainer" parent="ParallaxBackground"]
+margin_left = -2.0
+margin_top = 1.0
+margin_right = 978.0
+margin_bottom = 551.0
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H" type="HBoxContainer" parent="ParallaxBackground/GUI"]
+margin_right = 980.0
+margin_bottom = 550.0
+
+[node name="V" type="VBoxContainer" parent="ParallaxBackground/GUI/H"]
+margin_bottom = 550.0
+
+[node name="MC" type="MarginContainer" parent="ParallaxBackground/GUI/H"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 550.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ParallaxBackground/GUI/H/MC"]
+margin_bottom = 550.0
+texture = ExtResource( 28 )
+
+[node name="HP" type="TextureRect" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 11.2363
+margin_top = 14.6546
+margin_right = 46.2363
+margin_bottom = 38.6546
+rect_scale = Vector2( 0.802144, 0.772361 )
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life_bar" type="TextureProgress" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 48.0
+margin_top = 12.0
+margin_right = 444.0
+margin_bottom = 65.0
+rect_scale = Vector2( 0.4, 0.44 )
+value = 100.0
+texture_under = ExtResource( 25 )
+texture_progress = ExtResource( 27 )
+tint_progress = Color( 1, 0.117647, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life" type="Label" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 102.818
+margin_top = 14.2453
+margin_right = 163.818
+margin_bottom = 39.2453
+rect_scale = Vector2( 0.708, 0.791667 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXP" type="Label" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 32.7193
+margin_top = 38.1607
+margin_right = 72.7193
+margin_bottom = 59.1607
+rect_scale = Vector2( 0.44, 0.48 )
+custom_fonts/font = SubResource( 34 )
+text = "EXP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exp_bar" type="TextureProgress" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 50.0819
+margin_top = 37.7976
+margin_right = 298.082
+margin_bottom = 77.7976
+rect_scale = Vector2( 0.38, 0.22 )
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin_niveau" type="NinePatchRect" parent="ParallaxBackground/GUI/H/MC/NinePatchRect"]
+margin_left = 221.678
+margin_top = 13.0815
+margin_right = 261.678
+margin_bottom = 53.0815
+rect_scale = Vector2( 1.76, 0.56 )
+texture = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_niveau" type="Label" parent="ParallaxBackground/GUI/H/MC/NinePatchRect/Margin_niveau"]
+margin_left = 2.00879
+margin_top = 0.631346
+margin_right = 42.0088
+margin_bottom = 14.6313
+rect_scale = Vector2( 0.619858, 1.89789 )
+custom_fonts/font = SubResource( 48 )
+text = "Niv :"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Niveau" type="Label" parent="ParallaxBackground/GUI/H/MC/NinePatchRect/Margin_niveau"]
+margin_left = 26.3193
+margin_top = 3.08785
+margin_right = 66.3193
+margin_bottom = 23.0879
+rect_scale = Vector2( 0.265221, 1.67484 )
+custom_fonts/font = SubResource( 50 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 14 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( 393226, 0, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 2, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 2, 0, 458757, 6, 0, 458760, 0, 0, 458761, 1, 0, 458762, 4, 0, 458763, 4, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 458778, 4, 0, 458779, 5, 0, 524288, 3, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524293, 7, 0, 524296, 3, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 5, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 5, 0, 589829, 7, 0, 589832, 3, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 5, 0, 655360, 3, 0, 655361, 4, 0, 655362, 4, 0, 655363, 5, 0, 655365, 7, 0, 655368, 3, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 5, 0, 720896, 3, 0, 720897, 4, 0, 720898, 4, 0, 720899, 5, 0, 720901, 7, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 720923, 5, 0 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 20.1868, 423.425 )
+script = ExtResource( 24 )
+level = 1
+max_experience = 100
+max_health = 100
+damage = 1.0
+speed = 1.0
+jump = 1.0
+heal = 1.0
+cooldown = 1000.0
+attack_cooldown = 1000.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+scale = Vector2( 0.882275, 1 )
+frames = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 16 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -1.46307, 2.55276 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+drag_margin_top = 1.0
+drag_margin_bottom = 1.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+enabled = true
+cast_to = Vector2( 15, 0 )
+
+[node name="Skeleton_tuto" type="KinematicBody2D" parent="."]
+position = Vector2( 1043.53, 366.859 )
+script = ExtResource( 33 )
+level = 1
+max_health = 10
+damage = 1.0
+speed = 1.0
+jump = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton_tuto"]
+position = Vector2( 2.34534, 4.83499 )
+scale = Vector2( 0.80002, 0.651768 )
+shape = SubResource( 17 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Skeleton_tuto"]
+position = Vector2( 0, 0.235992 )
+frames = SubResource( 23 )
+animation = "Hit"
+frame = 2
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="Skeleton_tuto"]
+margin_left = -153.584
+margin_top = -109.653
+margin_right = 1766.42
+margin_bottom = 167.347
+rect_scale = Vector2( 0.156299, 0.303002 )
+texture = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Skeleton_tuto/TextureRect"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 385.869
+margin_top = 68.8403
+margin_right = 785.869
+margin_bottom = 168.84
+rect_scale = Vector2( 2.77877, 1.84209 )
+theme = SubResource( 26 )
+text = "Frappe moi pour gagné. Si tu me bats tu gagne des Exp, *Clique gauche* pour tapé"
+
+[connection signal="exp_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_exp_up"]
+[connection signal="health_changed" from="Player" to="ParallaxBackground/GUI" method="_on_Player_health_changed"]
+[connection signal="level_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_level_up"]
+[connection signal="ready_stats" from="Player" to="ParallaxBackground/GUI" method="_on_Player_ready_stats"]
+[connection signal="die" from="Skeleton_tuto" to="Player" method="_on_Ennemie_tuto_die"]

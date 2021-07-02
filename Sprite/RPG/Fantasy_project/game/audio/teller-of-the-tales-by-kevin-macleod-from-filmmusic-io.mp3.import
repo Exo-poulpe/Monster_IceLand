@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/teller-of-the-tales-by-kevin-macleod-from-filmmusic-io.mp3-149867c7774fd85a5a0dde976a7ddf22.mp3str"
+
+[deps]
+
+source_file="res://Sprite/RPG/Fantasy_project/game/audio/teller-of-the-tales-by-kevin-macleod-from-filmmusic-io.mp3"
+dest_files=[ "res://.import/teller-of-the-tales-by-kevin-macleod-from-filmmusic-io.mp3-149867c7774fd85a5a0dde976a7ddf22.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
