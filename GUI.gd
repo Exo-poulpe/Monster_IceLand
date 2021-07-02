@@ -52,4 +52,3 @@ func _on_Player_level_up(my_experience,my_max_experience,level):
 	exp_bar.value = my_experience
 	exp_bar.max_value = level * my_max_experience 
 	niveau.text = str(level)
-	pass

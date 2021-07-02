@@ -97,8 +97,6 @@ func take_damage(count):
 func get_input(_delta):
 	_animated_sprite.speed_scale = 1;
 	
-	if Input.is_key_pressed(KEY_Q):
-		_on_Ennemie_tuto_die(1)
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
 		velocity.x = 0;
 		_animated_sprite.speed_scale = 0.25;
@@ -138,7 +136,11 @@ func get_input(_delta):
 		else:
 			_animated_sprite.play("Air");
 		
-		
+	if Input.is_mouse_button_pressed(BUTTON_MIDDLE):
+		if Input.is_key_pressed(KEY_D):
+			velocity.x += 300
+		if Input.is_key_pressed(KEY_A):
+			velocity.x -= 300
 	
 	
 	velocity.y += gravity * _delta;
@@ -160,3 +162,18 @@ func _on_Ennemie_tuto_die(value):
 		my_level += 1
 		emit_signal("level_up",my_experience,my_max_experience,my_level)
 	emit_signal("exp_up",my_experience)
+
+
+func _on_Skill1_Rush():
+#	print("Rush skill")
+	if Input.is_key_pressed(KEY_D):
+		velocity.x += 600
+	if Input.is_key_pressed(KEY_A):
+		velocity.x -= 600
+	if Input.is_key_pressed(KEY_W):
+		velocity.y -= 200
+	if Input.is_key_pressed(KEY_S):
+		velocity.y += 200
+	velocity = move_and_slide(velocity,Vector2.UP);
+		
+		

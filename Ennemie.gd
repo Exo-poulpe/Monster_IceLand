@@ -19,6 +19,7 @@ export var jump : float
 export var critical : float
 export var heal : float
 export var cooldown : float
+export var attack_cooldown : float
 
 export (int) var gravity = 300
 enum STATES {ALIVE, DEAD}
@@ -35,7 +36,8 @@ func _hited(damage_value):
 	my_health -= damage_value
 	mode = MODES.HIT
 	_animated_sprite.play("Hit")
-	print("Play Hit",_animated_sprite)
+	if my_health < int(max_health / 2):
+		mode = MODES.ATTACK
 	if my_health <= 0:
 		state = STATES.DEAD
 		_animated_sprite.play("Death")
@@ -59,6 +61,8 @@ func _process(_delta):
 			if count_frame >= limit_frame:
 				mode = MODES.IDLE
 				count_frame = 0
+		elif mode == MODES.ATTACK:
+			_animated_sprite.play("Attack")
 		elif mode == MODES.IDLE:
 			_animated_sprite.play("Idle")
 	else:
@@ -66,6 +70,7 @@ func _process(_delta):
 		velocity = move_and_slide(velocity,Vector2.UP);
 
 # Called when the node enters the scene tree for the first time.
+var next_time_damage = 0
 var next_time_attack = 0
 var my_health = max_health
 var my_mana = max_mana
@@ -77,9 +82,10 @@ var my_level = level
 var my_armor = armor
 var my_speed = speed
 var my_jump = jump
-
+var my_attack_cooldown = attack_cooldown
 
 func _ready():
+	next_time_damage = 0
 	next_time_attack = 0
 	my_health = max_health
 	my_mana = max_mana
