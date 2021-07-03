@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 
-onready var _animated_sprite = $AnimatedSprite
 onready var _animated_player = $AnimationPlayer
 onready var _collision = $CollisionShape2D
 onready var _dialogue = $TextureRect
@@ -108,6 +107,7 @@ func _process(_delta):
 		return
 	if my_health <= 0:
 		$Dialogue.visible = false
+		$Body.disabled = true
 		mode = MODES.DEAD
 		_animated_player.play("Death")
 		_animated_player.connect("animation_finished",self,"DeathEnd")
@@ -139,7 +139,6 @@ func _process(_delta):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if str(anim_name) == "Death":
 		mode = MODES.END
-		$Body.disabled = true
 	elif anim_name == "Hit":
 		mode = MODES.IDLE
 	elif anim_name == "Idle":

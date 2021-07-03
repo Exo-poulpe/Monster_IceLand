@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 
 onready var _animated_sprite = $AnimatedSprite
+onready var _animated_player = $AnimationPlayer
 onready var _raycast = $RayCast2D
 
 signal health_changed
@@ -45,6 +46,7 @@ var my_armor = armor
 var my_speed = speed
 var my_jump = jump
 var my_attack_cooldown = attack_cooldown
+var direction = 0 # 0 = droite
 
 func _ready():
 	next_time_damage = 0
@@ -63,6 +65,37 @@ func _ready():
 	emit_signal("ready_stats",my_health,max_health,my_mana,max_mana,my_damage,
 	my_experience,my_max_experience,my_level,my_armor,my_speed,my_jump,my_attack_cooldown);
 	
+func UnHideSprite(name):
+	if name == "Idle":
+		$Idle.visible = true
+		$Run.visible = false
+		$Air.visible = false
+	elif name == "Run":
+		$Idle.visible = false
+		$Run.visible = true
+		$Air.visible = false
+	elif name == "Air":
+		$Idle.visible = false
+		$Run.visible = false
+		$Air.visible = true
+#	elif name == "Death":
+#		$Idle.visible = false
+#		$Hit.visible = false
+#		$Death.visible = true
+#		$End.visible = false
+#		$Attack.visible = false
+#	elif name == "Attack":
+#		$Idle.visible = false
+#		$Hit.visible = false
+#		$Death.visible = false
+#		$End.visible = false
+#		$Attack.visible = true
+#	elif name == "End":
+#		$Idle.visible = false
+#		$Hit.visible = false
+#		$Death.visible = false
+#		$End.visible = true
+#		$Attack.visible = false
 
 
 func _physics_process(_delta):
@@ -101,12 +134,13 @@ func get_input(_delta):
 		my_experience += 1
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
 		velocity.x = 0;
-		_animated_sprite.speed_scale = 0.25;
-		_animated_sprite.play("Stop");
+		UnHideSprite("Idle")
+		_animated_player.play("Idle")
 	if Input.is_key_pressed(KEY_SPACE) and is_on_floor():
 		_animated_sprite.play("Jump");
 		velocity.y = -250 * my_jump;
-		_animated_sprite.play("Air");
+		UnHideSprite("Air")
+		_animated_player.play("Air")
 	var now = OS.get_ticks_msec()
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and now > next_time_attack:
 		_animated_sprite.speed_scale = 3;
@@ -116,27 +150,31 @@ func get_input(_delta):
 				target._hited(my_damage)
 		next_time_attack = now + attack_cooldown
 	if Input.is_key_pressed(KEY_D):
-		_animated_sprite.flip_h = false;
+		direction_setter(0)
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
 			velocity.x = 150 * my_speed;
 		else:
 			velocity.x = 150 * my_speed;
 		if is_on_floor():
-			_animated_sprite.play("Run")
+			UnHideSprite("Run")
+			_animated_player.play("Run")
 		else:
-			_animated_sprite.play("Air");
+			UnHideSprite("Air")
+			_animated_player.play("Air")
 		_raycast.cast_to = velocity.normalized() * 15
 	if Input.is_key_pressed(KEY_A):
-		_animated_sprite.flip_h = true;
+		direction_setter(1)
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
 			velocity.x = -150 * my_speed
 		else:
 			velocity.x = -150 * my_speed;
 		_raycast.cast_to = velocity.normalized() * 15
 		if is_on_floor():
-			_animated_sprite.play("Run")
+			UnHideSprite("Run")
+			_animated_player.play("Run")
 		else:
-			_animated_sprite.play("Air");
+			UnHideSprite("Air")
+			_animated_player.play("Air")
 		
 	if Input.is_mouse_button_pressed(BUTTON_MIDDLE):
 		if Input.is_key_pressed(KEY_D):
@@ -148,6 +186,15 @@ func get_input(_delta):
 	velocity.y += gravity * _delta;
 
 			
+func direction_setter(direction):
+	if direction == 0:
+		$Run.flip_h = false
+		$Air.flip_h = false
+		$Idle.flip_h = false
+	else:
+		$Run.flip_h = true
+		$Air.flip_h = true
+		$Idle.flip_h = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

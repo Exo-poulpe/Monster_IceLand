@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Sprite/[64x64] Rocky Grass.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-03.png" type="Texture" id=2]
@@ -389,6 +389,83 @@ animations = [ {
 radius = 10.1037
 height = 11.5046
 
+[sub_resource type="Animation" id=64]
+resource_name = "Air"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Air:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=61]
+resource_name = "Run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimatedTexture" id=62]
+flags = 4
+frames = 6
+frame_0/texture = ExtResource( 15 )
+frame_1/texture = ExtResource( 14 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 8 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 16 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 17 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 13 )
+frame_5/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=63]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 12 )
+frame_1/texture = ExtResource( 3 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=65]
+flags = 4
+frame_0/texture = ExtResource( 2 )
+
 [sub_resource type="CapsuleShape2D" id=23]
 
 [sub_resource type="Animation" id=58]
@@ -656,7 +733,7 @@ format = 1
 tile_data = PoolIntArray( 393228, 0, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 2, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 2, 0, 458757, 6, 0, 458760, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 458778, 4, 0, 458779, 5, 0, 524288, 3, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524293, 7, 0, 524296, 3, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 5, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 5, 0, 589829, 7, 0, 589832, 3, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 5, 0, 655360, 3, 0, 655361, 4, 0, 655362, 4, 0, 655363, 5, 0, 655365, 7, 0, 655368, 3, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 5, 0, 720896, 3, 0, 720897, 4, 0, 720898, 4, 0, 720899, 5, 0, 720901, 7, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 720923, 5, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 20.1868, 423.425 )
+position = Vector2( 18.2225, 428.476 )
 script = ExtResource( 24 )
 level = 1
 max_experience = 100
@@ -670,6 +747,8 @@ attack_cooldown = 1000.0
 gravity = 400
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+visible = false
+position = Vector2( -1.6837, 0 )
 scale = Vector2( 0.882275, 1 )
 frames = SubResource( 21 )
 animation = "End"
@@ -689,6 +768,25 @@ drag_margin_bottom = 1.0
 [node name="RayCast2D" type="RayCast2D" parent="Player"]
 enabled = true
 cast_to = Vector2( 15, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+playback_speed = 0.5
+anims/Air = SubResource( 64 )
+anims/Idle = SubResource( 60 )
+anims/Run = SubResource( 61 )
+
+[node name="Run" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( -2.80615, 0.280609 )
+texture = SubResource( 62 )
+
+[node name="Idle" type="Sprite" parent="Player"]
+visible = false
+texture = SubResource( 63 )
+
+[node name="Air" type="Sprite" parent="Player"]
+visible = false
+texture = SubResource( 65 )
 
 [node name="Skeleton_tuto" type="KinematicBody2D" parent="."]
 position = Vector2( 1043.53, 366.859 )
@@ -769,7 +867,7 @@ margin_right = 785.869
 margin_bottom = 168.84
 rect_scale = Vector2( 2.77877, 1.84209 )
 theme = SubResource( 54 )
-text = "Frappe-moi pour gagner. Si tu, me bats-tu, gagne des Exp, *clique gauche* pour taper"
+text = "Frappe-moi pour gagner. Si tu me bats, tu gagnes des Exp, *clique gauche* pour taper"
 
 [node name="RayCast2D" type="RayCast2D" parent="Skeleton_tuto"]
 enabled = true
