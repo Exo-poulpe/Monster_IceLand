@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Sprite/[64x64] Rocky Grass.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-03.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Sprite/RPG/Knight/PNG/active7.png" type="Texture" id=39]
 [ext_resource path="res://Sprite/RPG/Fantasy_project/game/gui/frame.png" type="Texture" id=40]
 [ext_resource path="res://Rush.gd" type="Script" id=41]
+[ext_resource path="res://My_Player.gd" type="Script" id=42]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
@@ -51,46 +52,28 @@ use_mipmaps = true
 use_filter = true
 font_data = SubResource( 1 )
 
-[sub_resource type="DynamicFontData" id=33]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Sprite/Font/Comfortaa-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=34]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 outline_color = Color( 0.996078, 0.996078, 0.996078, 1 )
-font_data = SubResource( 33 )
+font_data = SubResource( 3 )
 
-[sub_resource type="DynamicFontData" id=47]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://Sprite/Font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=48]
+[sub_resource type="DynamicFont" id=6]
 use_mipmaps = true
-font_data = SubResource( 47 )
+font_data = SubResource( 5 )
 
-[sub_resource type="DynamicFontData" id=49]
+[sub_resource type="DynamicFontData" id=7]
 font_path = "res://Sprite/Font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=50]
+[sub_resource type="DynamicFont" id=8]
 use_mipmaps = true
 use_filter = true
-font_data = SubResource( 49 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+font_data = SubResource( 7 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -107,7 +90,25 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
-[sub_resource type="TileSet" id=14]
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=20]
 resource_local_to_scene = true
 0/name = "[64x64] Rocky Grass.png 0"
 0/texture = ExtResource( 1 )
@@ -119,14 +120,14 @@ resource_local_to_scene = true
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 3 )
+0/shape = SubResource( 9 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -140,14 +141,14 @@ resource_local_to_scene = true
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 4 )
+1/shape = SubResource( 10 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -161,14 +162,14 @@ resource_local_to_scene = true
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 6 )
+2/shape = SubResource( 12 )
 2/shape_one_way = false
 2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -182,14 +183,14 @@ resource_local_to_scene = true
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 7 )
+3/shape = SubResource( 13 )
 3/shape_one_way = false
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -203,14 +204,14 @@ resource_local_to_scene = true
 4/navigation_offset = Vector2( 0, 0 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape = SubResource( 8 )
+4/shape = SubResource( 14 )
 4/shape_one_way = false
 4/shape_one_way_margin = 1.0
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 14 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
@@ -224,14 +225,14 @@ resource_local_to_scene = true
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 9 )
+5/shape = SubResource( 15 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -245,14 +246,14 @@ resource_local_to_scene = true
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 10 )
+6/shape = SubResource( 16 )
 6/shape_one_way = false
 6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 16 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
@@ -266,14 +267,14 @@ resource_local_to_scene = true
 7/navigation_offset = Vector2( 0, 0 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 11 )
+7/shape = SubResource( 17 )
 7/shape_one_way = false
 7/shape_one_way_margin = 1.0
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 11 ),
+"shape": SubResource( 17 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
@@ -287,14 +288,14 @@ resource_local_to_scene = true
 8/navigation_offset = Vector2( 0, 0 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 12 )
+8/shape = SubResource( 18 )
 8/shape_one_way = false
 8/shape_one_way_margin = 1.0
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 12 ),
+"shape": SubResource( 18 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 8/z_index = 0
@@ -308,14 +309,14 @@ resource_local_to_scene = true
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 13 )
+9/shape = SubResource( 19 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 13 ),
+"shape": SubResource( 19 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
@@ -329,43 +330,28 @@ resource_local_to_scene = true
 10/navigation_offset = Vector2( 0, 0 )
 10/shape_offset = Vector2( 0, 0 )
 10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape = SubResource( 5 )
+10/shape = SubResource( 11 )
 10/shape_one_way = false
 10/shape_one_way_margin = 1.0
 10/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 10/z_index = 0
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "Attack",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Death",
+"name": "End",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "Jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Air",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "Hit",
+"name": "Stop",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
@@ -373,195 +359,131 @@ animations = [ {
 "name": "Run",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Stop",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=16]
-radius = 10.1037
-height = 11.5046
-
-[sub_resource type="CapsuleShape2D" id=17]
-
-[sub_resource type="AtlasTexture" id=51]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 76, 0, 38, 37 )
-
-[sub_resource type="AtlasTexture" id=52]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 120, 0, 40, 37 )
-
-[sub_resource type="AtlasTexture" id=53]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 160, 0, 40, 37 )
-
-[sub_resource type="AtlasTexture" id=54]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 200, 0, 40, 37 )
-
-[sub_resource type="AtlasTexture" id=55]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 258, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=56]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 301, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 344, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=58]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 559, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=59]
-flags = 4
-atlas = ExtResource( 38 )
-region = Rect2( 602, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=35]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 231, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=36]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 264, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=37]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 297, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=38]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 330, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 363, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=40]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 396, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=41]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 429, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=42]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 462, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=44]
-flags = 4
-atlas = ExtResource( 37 )
-region = Rect2( 0, 0, 34, 32 )
-
-[sub_resource type="AtlasTexture" id=45]
-flags = 4
-atlas = ExtResource( 37 )
-region = Rect2( 30, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=46]
-flags = 4
-atlas = ExtResource( 37 )
-region = Rect2( 60, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=43]
-flags = 4
-atlas = ExtResource( 36 )
-region = Rect2( 462, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 0, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 24, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 48, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 72, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 96, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=32]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 120, 0, 24, 32 )
-
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Attack",
-"speed": 5.0
+"speed": 3.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
-"loop": true,
-"name": "Death",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "Hit",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 43 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "End",
+"name": "Death",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Air",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Jump",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=24]
+[sub_resource type="CapsuleShape2D" id=22]
+radius = 10.1037
+height = 11.5046
+
+[sub_resource type="CapsuleShape2D" id=23]
+
+[sub_resource type="Animation" id=58]
+resource_name = "Attack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17 ]
+}
+
+[sub_resource type="Animation" id=56]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Death:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14, 14, 14 ]
+}
+
+[sub_resource type="Animation" id=59]
+resource_name = "End"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("End:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 14 ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 ]
+}
+
+[sub_resource type="Animation" id=55]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 1, 2, 3, 4, 5, 10 ]
+}
+
+[sub_resource type="DynamicFontData" id=52]
 font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=53]
 size = 22
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = 2
 extra_spacing_char = 1
-font_data = SubResource( 24 )
+font_data = SubResource( 52 )
 
-[sub_resource type="Theme" id=26]
-default_font = SubResource( 25 )
+[sub_resource type="Theme" id=54]
+default_font = SubResource( 53 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -2, 1 )
@@ -647,7 +569,7 @@ margin_top = 38.1607
 margin_right = 72.7193
 margin_bottom = 59.1607
 rect_scale = Vector2( 0.44, 0.48 )
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 4 )
 text = "EXP"
 align = 1
 valign = 1
@@ -663,6 +585,7 @@ margin_bottom = 77.7976
 rect_scale = Vector2( 0.38, 0.22 )
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 35 )
+tint_progress = Color( 0.0313726, 0, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -684,7 +607,7 @@ margin_top = 0.631346
 margin_right = 42.0088
 margin_bottom = 14.6313
 rect_scale = Vector2( 0.619858, 1.89789 )
-custom_fonts/font = SubResource( 48 )
+custom_fonts/font = SubResource( 6 )
 text = "Niv :"
 align = 1
 valign = 1
@@ -696,7 +619,7 @@ margin_top = 3.08785
 margin_right = 66.3193
 margin_bottom = 23.0879
 rect_scale = Vector2( 0.265221, 1.67484 )
-custom_fonts/font = SubResource( 50 )
+custom_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 __meta__ = {
@@ -727,10 +650,10 @@ script = ExtResource( 41 )
 cooldown = 1000.0
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 14 )
+tile_set = SubResource( 20 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 2, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 2, 0, 458757, 6, 0, 458760, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 458778, 4, 0, 458779, 5, 0, 524288, 3, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524293, 7, 0, 524296, 3, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 5, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 5, 0, 589829, 7, 0, 589832, 3, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 5, 0, 655360, 3, 0, 655361, 4, 0, 655362, 4, 0, 655363, 5, 0, 655365, 7, 0, 655368, 3, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 5, 0, 720896, 3, 0, 720897, 4, 0, 720898, 4, 0, 720899, 5, 0, 720901, 7, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 720923, 5, 0 )
+tile_data = PoolIntArray( 393228, 0, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 2, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 2, 0, 458757, 6, 0, 458760, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 458778, 4, 0, 458779, 5, 0, 524288, 3, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524293, 7, 0, 524296, 3, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 5, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 5, 0, 589829, 7, 0, 589832, 3, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 5, 0, 655360, 3, 0, 655361, 4, 0, 655362, 4, 0, 655363, 5, 0, 655365, 7, 0, 655368, 3, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 5, 0, 720896, 3, 0, 720897, 4, 0, 720898, 4, 0, 720899, 5, 0, 720901, 7, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 720923, 5, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 20.1868, 423.425 )
@@ -738,20 +661,22 @@ script = ExtResource( 24 )
 level = 1
 max_experience = 100
 max_health = 100
-damage = 1.0
+damage = 2.0
 speed = 1.0
 jump = 1.0
 heal = 1.0
 cooldown = 1000.0
 attack_cooldown = 1000.0
+gravity = 400
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.882275, 1 )
-frames = SubResource( 15 )
+frames = SubResource( 21 )
+animation = "End"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 3.5 )
-shape = SubResource( 16 )
+shape = SubResource( 22 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -1.46307, 2.55276 )
@@ -768,25 +693,64 @@ cast_to = Vector2( 15, 0 )
 [node name="Skeleton_tuto" type="KinematicBody2D" parent="."]
 position = Vector2( 1043.53, 366.859 )
 script = ExtResource( 33 )
-level = 1
+job_name = "Skelete"
+level = 100
 max_health = 10
 damage = 1.0
 speed = 1.0
 jump = 1.0
+cooldown = 1000.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton_tuto"]
+[node name="Body" type="CollisionShape2D" parent="Skeleton_tuto"]
 position = Vector2( 2.34534, 4.83499 )
 scale = Vector2( 0.80002, 0.651768 )
-shape = SubResource( 17 )
+shape = SubResource( 23 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Skeleton_tuto"]
-position = Vector2( 0, 0.235992 )
-frames = SubResource( 23 )
-animation = "Attack"
-frame = 5
+[node name="Hit" type="Sprite" parent="Skeleton_tuto"]
+visible = false
+texture = ExtResource( 37 )
 flip_h = true
+hframes = 8
+frame = 1
 
-[node name="TextureRect" type="TextureRect" parent="Skeleton_tuto"]
+[node name="Idle" type="Sprite" parent="Skeleton_tuto"]
+visible = false
+texture = ExtResource( 32 )
+flip_h = true
+hframes = 11
+frame = 1
+
+[node name="Death" type="Sprite" parent="Skeleton_tuto"]
+visible = false
+texture = ExtResource( 36 )
+flip_h = true
+hframes = 15
+frame = 1
+
+[node name="Attack" type="Sprite" parent="Skeleton_tuto"]
+visible = false
+position = Vector2( -8.21082, -1.32431 )
+texture = ExtResource( 38 )
+flip_h = true
+hframes = 18
+frame = 1
+
+[node name="End" type="Sprite" parent="Skeleton_tuto"]
+visible = false
+texture = ExtResource( 36 )
+flip_h = true
+hframes = 15
+frame = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton_tuto"]
+anims/Attack = SubResource( 58 )
+anims/Death = SubResource( 56 )
+anims/End = SubResource( 59 )
+anims/Hit = SubResource( 57 )
+anims/Idle = SubResource( 55 )
+script = ExtResource( 42 )
+
+[node name="Dialogue" type="TextureRect" parent="Skeleton_tuto"]
 margin_left = -153.584
 margin_top = -109.653
 margin_right = 1766.42
@@ -797,15 +761,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Skeleton_tuto/TextureRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Skeleton_tuto/Dialogue"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 385.869
 margin_top = 68.8403
 margin_right = 785.869
 margin_bottom = 168.84
 rect_scale = Vector2( 2.77877, 1.84209 )
-theme = SubResource( 26 )
-text = "Frappe moi pour gagné. Si tu me bats tu gagne des Exp, *Clique gauche* pour tapé"
+theme = SubResource( 54 )
+text = "Frappe-moi pour gagner. Si tu, me bats-tu, gagne des Exp, *clique gauche* pour taper"
 
 [node name="RayCast2D" type="RayCast2D" parent="Skeleton_tuto"]
 enabled = true
@@ -817,4 +781,4 @@ cast_to = Vector2( -15, 0 )
 [connection signal="health_changed" from="Player" to="ParallaxBackground/GUI" method="_on_Player_health_changed"]
 [connection signal="level_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_level_up"]
 [connection signal="ready_stats" from="Player" to="ParallaxBackground/GUI" method="_on_Player_ready_stats"]
-[connection signal="die" from="Skeleton_tuto" to="Player" method="_on_Ennemie_tuto_die"]
+[connection signal="animation_finished" from="Skeleton_tuto/AnimationPlayer" to="Skeleton_tuto" method="_on_AnimationPlayer_animation_finished"]

@@ -80,6 +80,7 @@ func _physics_process(_delta):
 
 func take_damage(count):
 	if state == STATES.DEAD:
+		_animated_sprite.play("End")
 		return
 
 	my_health -= count
@@ -96,7 +97,8 @@ func take_damage(count):
 
 func get_input(_delta):
 	_animated_sprite.speed_scale = 1;
-	
+	if Input.is_key_pressed(KEY_Q):
+		my_experience += 1
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
 		velocity.x = 0;
 		_animated_sprite.speed_scale = 0.25;
@@ -116,9 +118,9 @@ func get_input(_delta):
 	if Input.is_key_pressed(KEY_D):
 		_animated_sprite.flip_h = false;
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
-			velocity.x = 100 * my_speed;
+			velocity.x = 150 * my_speed;
 		else:
-			velocity.x = 80 * my_speed;
+			velocity.x = 150 * my_speed;
 		if is_on_floor():
 			_animated_sprite.play("Run")
 		else:
@@ -127,9 +129,9 @@ func get_input(_delta):
 	if Input.is_key_pressed(KEY_A):
 		_animated_sprite.flip_h = true;
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
-			velocity.x *= 2
+			velocity.x = -150 * my_speed
 		else:
-			velocity.x = -80 * my_speed;
+			velocity.x = -150 * my_speed;
 		_raycast.cast_to = velocity.normalized() * 15
 		if is_on_floor():
 			_animated_sprite.play("Run")
@@ -150,16 +152,13 @@ func get_input(_delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _hited(damage):
-	take_damage(damage)
+func _hited(value_damage):
+	take_damage(value_damage)
 
 func _on_Ennemie_tuto_die(value):
 	my_experience += value
-	if my_experience >= (my_level * my_max_experience):
-		if my_experience == (my_level * my_max_experience):
-			my_experience = 0
-		elif my_experience > (my_level * my_max_experience):
-			my_experience = my_experience - (my_level * my_max_experience)
+	while my_experience >= (my_level * my_max_experience):
+		my_experience = my_experience - (my_level * my_max_experience)
 		my_level += 1
 		emit_signal("level_up",my_experience,my_max_experience,my_level)
 	emit_signal("exp_up",my_experience)
