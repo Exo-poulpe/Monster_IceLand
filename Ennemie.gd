@@ -147,3 +147,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	elif anim_name == "Attack":
 		mode = MODES.IDLE
 	
+
+
+func _on_Player_died():
+	self.visible = false

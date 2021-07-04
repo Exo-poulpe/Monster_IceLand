@@ -135,8 +135,12 @@ func UnHideSprite(name):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Death":
+		_animated_player.stop()
 		UnHideSprite("GameOver")
 		_animated_player.play("GameOver")
+		_animated_player.connect("animation_finished",self,"GameOver")
+	elif anim_name == "GameOver":
+		_animated_player.stop()
 
 func _physics_process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -151,16 +155,17 @@ func _physics_process(_delta):
 
 func take_damage(count):
 	if state == STATES.DEAD:
-		_animated_sprite.play("End")
 		return
-
 	my_health -= count
 	if my_health <= 0:
 		my_health = 0
+		UnHideSprite("Death")
 		_animated_player.play("Death")
 		_animated_player.connect("animation_finished",self,"DeathEnd")
 		emit_signal("died")
-	_animated_player.play("Hit")
+	else:
+		UnHideSprite("Hit")
+		_animated_player.play("Hit")
 
 	emit_signal("health_changed", count)
 
