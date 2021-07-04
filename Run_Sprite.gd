@@ -73,6 +73,7 @@ func UnHideSprite(name):
 		$Attack.visible = false
 		$Run.visible = false
 		$Air.visible = false
+		$Death.visible = false
 	elif name == "Run":
 		$Idle.visible = false
 		$Hit.visible = false
@@ -81,6 +82,7 @@ func UnHideSprite(name):
 		$Attack.visible = false
 		$Air.visible = false
 		$Run.visible = true
+		$Death.visible = false
 	elif name == "Air":
 		$Idle.visible = false
 		$Hit.visible = false
@@ -89,6 +91,7 @@ func UnHideSprite(name):
 		$Attack.visible = false
 		$Run.visible = false
 		$Air.visible = true
+		$Death.visible = false
 	elif name == "Attack":
 		$Idle.visible = false
 		$Hit.visible = false
@@ -97,12 +100,26 @@ func UnHideSprite(name):
 		$Air.visible = false
 		$Run.visible = false
 		$Attack.visible = true
-#	elif name == "Death":
-#		$Idle.visible = false
-#		$Hit.visible = false
-#		$Death.visible = true
-#		$End.visible = false
-#		$Attack.visible = false
+		$Death.visible = false
+	elif name == "Death":
+		$Idle.visible = false
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Air.visible = false
+		$Run.visible = false
+		$Attack.visible = false
+		$Death.visible = true
+	elif name == "GameOver":
+		$Idle.visible = false
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Air.visible = false
+		$Run.visible = false
+		$Attack.visible = false
+		$Death.visible = false
+		$OverPanel.visible = true
 #	elif name == "Attack":
 #		$Idle.visible = false
 #		$Hit.visible = false
@@ -116,16 +133,18 @@ func UnHideSprite(name):
 #		$End.visible = true
 #		$Attack.visible = false
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Death":
+		UnHideSprite("GameOver")
+		_animated_player.play("GameOver")
 
 func _physics_process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit(0);
 	var now = OS.get_ticks_msec()
 	if Input.is_key_pressed(KEY_ALT) and now > next_time_damage:
-		take_damage(10)
+		take_damage(50)
 		next_time_damage = now + cooldown
-	if state == STATES.DEAD:
-		_animated_sprite.play("Death")
 	else:
 		get_input(_delta);
 		velocity = move_and_slide(velocity,Vector2.UP);
@@ -138,16 +157,18 @@ func take_damage(count):
 	my_health -= count
 	if my_health <= 0:
 		my_health = 0
-		state = STATES.DEAD
+		_animated_player.play("Death")
+		_animated_player.connect("animation_finished",self,"DeathEnd")
 		emit_signal("died")
-
-	_animated_sprite.play("Hit")
+	_animated_player.play("Hit")
 
 	emit_signal("health_changed", count)
 
 
 
 func get_input(_delta):
+	if state == STATES.DEAD:
+		return
 #	_animated_player.playback_speed = 1
 	if Input.is_key_pressed(KEY_Q):
 		my_experience += 1
@@ -247,7 +268,6 @@ func _on_Skill1_Rush():
 
 
 func _on_Player_died():
-	self.visible = false
 	$Body.visible = false
-	print("Play GameOver")
-	_animated_player.play("GameOver")
+	state = STATES.DEAD
+	
