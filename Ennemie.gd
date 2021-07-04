@@ -146,8 +146,20 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		mode = MODES.IDLE
 	elif anim_name == "Attack":
 		mode = MODES.IDLE
-	
 
 
 func _on_Player_died():
 	self.visible = false
+
+
+func _on_Zone_body_entered(body):
+	if body is KinematicBody2D:
+		if body.get_class() == "Player":
+			print("Track")
+			print(body.position.x)
+			print(self.position.x)
+			if body.position.x < self.position.x:
+				velocity.x -= 10
+			else:
+				velocity.x += 10
+	velocity = move_and_slide(velocity,Vector2.UP)

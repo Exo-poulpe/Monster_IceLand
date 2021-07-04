@@ -159,6 +159,8 @@ func take_damage(count):
 	my_health -= count
 	if my_health <= 0:
 		my_health = 0
+		velocity.x = 0
+		velocity.y = 0
 		UnHideSprite("Death")
 		_animated_player.play("Death")
 		_animated_player.connect("animation_finished",self,"DeathEnd")
@@ -271,6 +273,8 @@ func _on_Skill1_Rush():
 	velocity = move_and_slide(velocity,Vector2.UP);
 		
 
+func get_class():
+	return "Player"
 
 func _on_Player_died():
 	$Body.visible = false

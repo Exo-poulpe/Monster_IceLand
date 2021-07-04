@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Sprite/[64x64] Rocky Grass.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-03.png" type="Texture" id=2]
@@ -704,6 +704,8 @@ font_data = SubResource( 35 )
 [sub_resource type="Theme" id=37]
 default_font = SubResource( 36 )
 
+[sub_resource type="CircleShape2D" id=47]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2( -2, 1 )
 
@@ -956,11 +958,12 @@ anims/Run = SubResource( 25 )
 
 [node name="Run" type="Sprite" parent="Player"]
 visible = false
-position = Vector2( -2.80615, 0.280609 )
+position = Vector2( -3.07102, 0.545471 )
 texture = SubResource( 26 )
 
 [node name="Idle" type="Sprite" parent="Player"]
 visible = false
+position = Vector2( -0.132431, 1.19189 )
 texture = SubResource( 27 )
 
 [node name="Air" type="Sprite" parent="Player"]
@@ -969,15 +972,17 @@ texture = SubResource( 28 )
 
 [node name="Attack" type="Sprite" parent="Player"]
 visible = false
-position = Vector2( 1.32433, 2.38379 )
+position = Vector2( 1.45676, 4.63513 )
 texture = SubResource( 39 )
 
 [node name="Death" type="Sprite" parent="Player"]
 visible = false
+position = Vector2( -0.66217, 1.32434 )
 texture = SubResource( 44 )
 
 [node name="Hit" type="Sprite" parent="Player"]
 visible = false
+position = Vector2( 0, 1.05948 )
 texture = SubResource( 46 )
 
 [node name="End" type="Sprite" parent="Player"]
@@ -1068,6 +1073,12 @@ text = "Frappe-moi pour gagner. Si tu me bats, tu gagnes des Exp, *clique gauche
 enabled = true
 cast_to = Vector2( -15, 0 )
 
+[node name="Zone" type="Area2D" parent="Skeleton_tuto"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton_tuto/Zone"]
+scale = Vector2( 14.5056, 11.305 )
+shape = SubResource( 47 )
+
 [connection signal="Rush" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="Player" method="_on_Skill1_Rush"]
 [connection signal="mouse_entered" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" method="_on_Skill1_mouse_entered"]
 [connection signal="died" from="Player" to="ParallaxBackground/GUI" method="_on_Player_died"]
@@ -1079,3 +1090,4 @@ cast_to = Vector2( -15, 0 )
 [connection signal="ready_stats" from="Player" to="ParallaxBackground/GUI" method="_on_Player_ready_stats"]
 [connection signal="animation_finished" from="Player/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Skeleton_tuto/AnimationPlayer" to="Skeleton_tuto" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Skeleton_tuto/Zone" to="Skeleton_tuto" method="_on_Zone_body_entered"]
