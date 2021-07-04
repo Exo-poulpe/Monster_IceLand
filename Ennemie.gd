@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 
 onready var _animated_player = $AnimationPlayer
-onready var _collision = $CollisionShape2D
-onready var _dialogue = $TextureRect
+onready var _collision = $Body
+onready var _dialogue = $Dialogue
 onready var _raycast = $RayCast2D
 
 export var job_name : String = "Player"
@@ -132,7 +132,8 @@ func _process(_delta):
 			return
 	if mode == MODES.IDLE:
 		_animated_player.play("Idle")
-		_animated_player.connect("animation_finished",self,"IdleEnd")
+		if _animated_player.current_animation != "Idle":
+			_animated_player.connect("animation_finished",self,"IdleEnd")
 		UnHideSprite("Idle")
 
 

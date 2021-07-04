@@ -46,7 +46,6 @@ var my_armor = armor
 var my_speed = speed
 var my_jump = jump
 var my_attack_cooldown = attack_cooldown
-var direction = 0 # 0 = droite
 
 func _ready():
 	next_time_damage = 0
@@ -68,16 +67,36 @@ func _ready():
 func UnHideSprite(name):
 	if name == "Idle":
 		$Idle.visible = true
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Attack.visible = false
 		$Run.visible = false
 		$Air.visible = false
 	elif name == "Run":
 		$Idle.visible = false
-		$Run.visible = true
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Attack.visible = false
 		$Air.visible = false
+		$Run.visible = true
 	elif name == "Air":
 		$Idle.visible = false
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Attack.visible = false
 		$Run.visible = false
 		$Air.visible = true
+	elif name == "Attack":
+		$Idle.visible = false
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Air.visible = false
+		$Run.visible = false
+		$Attack.visible = true
 #	elif name == "Death":
 #		$Idle.visible = false
 #		$Hit.visible = false
@@ -129,7 +148,7 @@ func take_damage(count):
 
 
 func get_input(_delta):
-	_animated_sprite.speed_scale = 1;
+#	_animated_player.playback_speed = 1
 	if Input.is_key_pressed(KEY_Q):
 		my_experience += 1
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
@@ -143,8 +162,8 @@ func get_input(_delta):
 		_animated_player.play("Air")
 	var now = OS.get_ticks_msec()
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and now > next_time_attack:
-		_animated_sprite.speed_scale = 3;
-		_animated_sprite.play("Attack");
+		UnHideSprite("Attack")
+		_animated_player.play("Attack")
 		var target = _raycast.get_collider()
 		if target != null:
 				target._hited(my_damage)
@@ -191,7 +210,9 @@ func direction_setter(direction):
 		$Run.flip_h = false
 		$Air.flip_h = false
 		$Idle.flip_h = false
+		$Attack.flip_h = false
 	else:
+		$Attack.flip_h = true
 		$Run.flip_h = true
 		$Air.flip_h = true
 		$Idle.flip_h = true
@@ -223,4 +244,10 @@ func _on_Skill1_Rush():
 		velocity.y += 200
 	velocity = move_and_slide(velocity,Vector2.UP);
 		
-		
+
+
+func _on_Player_died():
+	self.visible = false
+	$Body.visible = false
+	print("Play GameOver")
+	_animated_player.play("GameOver")

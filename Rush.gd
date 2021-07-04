@@ -17,7 +17,7 @@ func _ready():
 
 func _input(event):
 	if self.visible == false:
-		pass
+		return
 	var  now = OS.get_ticks_msec()
 	if now >= my_cooldown:
 		if (event is InputEventMouseButton):

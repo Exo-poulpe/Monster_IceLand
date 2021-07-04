@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Sprite/[64x64] Rocky Grass.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-jump-03.png" type="Texture" id=2]
@@ -42,6 +42,10 @@
 [ext_resource path="res://Sprite/RPG/Fantasy_project/game/gui/frame.png" type="Texture" id=40]
 [ext_resource path="res://Rush.gd" type="Script" id=41]
 [ext_resource path="res://My_Player.gd" type="Script" id=42]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-air-attack1-03.png" type="Texture" id=43]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-air-attack1-01.png" type="Texture" id=44]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-air-attack1-00.png" type="Texture" id=45]
+[ext_resource path="res://Sprite/archer/Individual Sprites/adventurer-air-attack1-02.png" type="Texture" id=46]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
@@ -349,25 +353,25 @@ animations = [ {
 "name": "End",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Stop",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "Run",
+"name": "Hit",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "Hit",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 7 ) ],
 "loop": true,
@@ -389,7 +393,16 @@ animations = [ {
 radius = 10.1037
 height = 11.5046
 
-[sub_resource type="Animation" id=64]
+[sub_resource type="DynamicFontData" id=42]
+font_path = "res://Sprite/Font/CaslonAntique.ttf"
+
+[sub_resource type="DynamicFont" id=40]
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 42 )
+
+[sub_resource type="Animation" id=23]
 resource_name = "Air"
 length = 0.5
 loop = true
@@ -406,7 +419,62 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=60]
+[sub_resource type="Animation" id=38]
+resource_name = "Attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "GameOver"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate/GameOver:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasModulate/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
 resource_name = "Idle"
 length = 0.5
 loop = true
@@ -423,7 +491,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=61]
+[sub_resource type="Animation" id=25]
 resource_name = "Run"
 length = 0.5
 loop = true
@@ -440,7 +508,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="AnimatedTexture" id=62]
+[sub_resource type="AnimatedTexture" id=26]
 flags = 4
 frames = 6
 frame_0/texture = ExtResource( 15 )
@@ -455,20 +523,32 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 13 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=63]
+[sub_resource type="AnimatedTexture" id=27]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 12 )
 frame_1/texture = ExtResource( 3 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=65]
+[sub_resource type="AnimatedTexture" id=28]
 flags = 4
 frame_0/texture = ExtResource( 2 )
 
-[sub_resource type="CapsuleShape2D" id=23]
+[sub_resource type="AnimatedTexture" id=39]
+flags = 4
+frames = 4
+fps = 10.0
+frame_0/texture = ExtResource( 45 )
+frame_1/texture = ExtResource( 44 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 46 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 43 )
+frame_3/delay_sec = 0.0
 
-[sub_resource type="Animation" id=58]
+[sub_resource type="CapsuleShape2D" id=29]
+
+[sub_resource type="Animation" id=30]
 resource_name = "Attack"
 length = 2.0
 tracks/0/type = "value"
@@ -484,7 +564,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17 ]
 }
 
-[sub_resource type="Animation" id=56]
+[sub_resource type="Animation" id=31]
 resource_name = "Death"
 length = 2.0
 tracks/0/type = "value"
@@ -500,7 +580,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14, 14, 14 ]
 }
 
-[sub_resource type="Animation" id=59]
+[sub_resource type="Animation" id=32]
 resource_name = "End"
 loop = true
 tracks/0/type = "value"
@@ -516,7 +596,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=57]
+[sub_resource type="Animation" id=33]
 resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hit:frame")
@@ -531,7 +611,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 ]
 }
 
-[sub_resource type="Animation" id=55]
+[sub_resource type="Animation" id=34]
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
@@ -547,20 +627,20 @@ tracks/0/keys = {
 "values": [ 1, 1, 2, 3, 4, 5, 10 ]
 }
 
-[sub_resource type="DynamicFontData" id=52]
+[sub_resource type="DynamicFontData" id=35]
 font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=53]
+[sub_resource type="DynamicFont" id=36]
 size = 22
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = 2
 extra_spacing_char = 1
-font_data = SubResource( 52 )
+font_data = SubResource( 35 )
 
-[sub_resource type="Theme" id=54]
-default_font = SubResource( 53 )
+[sub_resource type="Theme" id=37]
+default_font = SubResource( 36 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -2, 1 )
@@ -733,7 +813,7 @@ format = 1
 tile_data = PoolIntArray( 393228, 0, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 2, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 2, 0, 458757, 6, 0, 458760, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 458778, 4, 0, 458779, 5, 0, 524288, 3, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524293, 7, 0, 524296, 3, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 4, 0, 524308, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 5, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 5, 0, 589829, 7, 0, 589832, 3, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 589842, 4, 0, 589843, 4, 0, 589844, 4, 0, 589845, 4, 0, 589846, 4, 0, 589847, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 5, 0, 655360, 3, 0, 655361, 4, 0, 655362, 4, 0, 655363, 5, 0, 655365, 7, 0, 655368, 3, 0, 655369, 4, 0, 655370, 4, 0, 655371, 4, 0, 655372, 4, 0, 655373, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0, 655378, 4, 0, 655379, 4, 0, 655380, 4, 0, 655381, 4, 0, 655382, 4, 0, 655383, 4, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 5, 0, 720896, 3, 0, 720897, 4, 0, 720898, 4, 0, 720899, 5, 0, 720901, 7, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 720923, 5, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 18.2225, 428.476 )
+position = Vector2( 15.0477, 429.269 )
 script = ExtResource( 24 )
 level = 1
 max_experience = 100
@@ -753,9 +833,39 @@ scale = Vector2( 0.882275, 1 )
 frames = SubResource( 21 )
 animation = "End"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Body" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 3.5 )
 shape = SubResource( 22 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Player"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -479.467, -266.148 )
+scale = Vector2( 3.2153, 13.5862 )
+
+[node name="ColorRect" type="ColorRect" parent="Player/CanvasModulate"]
+modulate = Color( 1, 0, 0, 0 )
+margin_right = 40.0
+margin_bottom = 4.0
+rect_scale = Vector2( 7.46553, 9.92073 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Label" parent="Player/CanvasModulate"]
+modulate = Color( 0, 0, 0, 0 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 119.152
+margin_top = 17.5069
+margin_right = 188.152
+margin_bottom = 39.5069
+rect_scale = Vector2( 0.938175, 0.16861 )
+custom_fonts/font = SubResource( 40 )
+text = "Game Over"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -1.46307, 2.55276 )
@@ -770,23 +880,38 @@ enabled = true
 cast_to = Vector2( 15, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-playback_speed = 0.5
-anims/Air = SubResource( 64 )
-anims/Idle = SubResource( 60 )
-anims/Run = SubResource( 61 )
+anims/Air = SubResource( 23 )
+anims/Attack = SubResource( 38 )
+anims/GameOver = SubResource( 41 )
+anims/Idle = SubResource( 24 )
+anims/Run = SubResource( 25 )
 
 [node name="Run" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( -2.80615, 0.280609 )
-texture = SubResource( 62 )
+texture = SubResource( 26 )
 
 [node name="Idle" type="Sprite" parent="Player"]
 visible = false
-texture = SubResource( 63 )
+texture = SubResource( 27 )
 
 [node name="Air" type="Sprite" parent="Player"]
 visible = false
-texture = SubResource( 65 )
+texture = SubResource( 28 )
+
+[node name="Attack" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( 1.32433, 2.38379 )
+texture = SubResource( 39 )
+
+[node name="Death" type="Sprite" parent="Player"]
+visible = false
+
+[node name="Hit" type="Sprite" parent="Player"]
+visible = false
+
+[node name="End" type="Sprite" parent="Player"]
+visible = false
 
 [node name="Skeleton_tuto" type="KinematicBody2D" parent="."]
 position = Vector2( 1043.53, 366.859 )
@@ -794,7 +919,7 @@ script = ExtResource( 33 )
 job_name = "Skelete"
 level = 100
 max_health = 10
-damage = 1.0
+damage = 50.0
 speed = 1.0
 jump = 1.0
 cooldown = 1000.0
@@ -802,21 +927,21 @@ cooldown = 1000.0
 [node name="Body" type="CollisionShape2D" parent="Skeleton_tuto"]
 position = Vector2( 2.34534, 4.83499 )
 scale = Vector2( 0.80002, 0.651768 )
-shape = SubResource( 23 )
+shape = SubResource( 29 )
 
 [node name="Hit" type="Sprite" parent="Skeleton_tuto"]
 visible = false
 texture = ExtResource( 37 )
 flip_h = true
 hframes = 8
-frame = 1
+frame = 7
 
 [node name="Idle" type="Sprite" parent="Skeleton_tuto"]
 visible = false
 texture = ExtResource( 32 )
 flip_h = true
 hframes = 11
-frame = 1
+frame = 3
 
 [node name="Death" type="Sprite" parent="Skeleton_tuto"]
 visible = false
@@ -831,7 +956,7 @@ position = Vector2( -8.21082, -1.32431 )
 texture = ExtResource( 38 )
 flip_h = true
 hframes = 18
-frame = 1
+frame = 17
 
 [node name="End" type="Sprite" parent="Skeleton_tuto"]
 visible = false
@@ -841,11 +966,11 @@ hframes = 15
 frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton_tuto"]
-anims/Attack = SubResource( 58 )
-anims/Death = SubResource( 56 )
-anims/End = SubResource( 59 )
-anims/Hit = SubResource( 57 )
-anims/Idle = SubResource( 55 )
+anims/Attack = SubResource( 30 )
+anims/Death = SubResource( 31 )
+anims/End = SubResource( 32 )
+anims/Hit = SubResource( 33 )
+anims/Idle = SubResource( 34 )
 script = ExtResource( 42 )
 
 [node name="Dialogue" type="TextureRect" parent="Skeleton_tuto"]
@@ -866,7 +991,7 @@ margin_top = 68.8403
 margin_right = 785.869
 margin_bottom = 168.84
 rect_scale = Vector2( 2.77877, 1.84209 )
-theme = SubResource( 54 )
+theme = SubResource( 37 )
 text = "Frappe-moi pour gagner. Si tu me bats, tu gagnes des Exp, *clique gauche* pour taper"
 
 [node name="RayCast2D" type="RayCast2D" parent="Skeleton_tuto"]
@@ -875,6 +1000,8 @@ cast_to = Vector2( -15, 0 )
 
 [connection signal="Rush" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="Player" method="_on_Skill1_Rush"]
 [connection signal="mouse_entered" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" method="_on_Skill1_mouse_entered"]
+[connection signal="died" from="Player" to="ParallaxBackground/GUI" method="_on_Player_died"]
+[connection signal="died" from="Player" to="Player" method="_on_Player_died"]
 [connection signal="exp_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_exp_up"]
 [connection signal="health_changed" from="Player" to="ParallaxBackground/GUI" method="_on_Player_health_changed"]
 [connection signal="level_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_level_up"]
