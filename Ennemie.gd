@@ -45,6 +45,9 @@ var mode = MODES.IDLE
 var velocity = Vector2()
 var send_exp = false
 var attack_on = false
+var tracking = false
+var tracking_direction = 0 # To left
+var player_to_track = null
 
 func _ready():
 	next_time_damage = 0
@@ -101,10 +104,32 @@ func _hited(damage_value):
 	_animated_player.play("Hit")
 	_animated_player.connect("animation_finished",self,"HitEnd")
 	UnHideSprite("Hit")
+	
+func direction_setter(direction):
+	if direction == 1:
+		$Idle.flip_h = false
+		$Attack.flip_h = false
+		_raycast.cast_to.x *= -1
+	else:
+		$Attack.flip_h = true
+		$Idle.flip_h = true
+		_raycast.cast_to.x *= -1
 
 func _process(_delta):
 	if mode == MODES.END:
 		return
+	if tracking and player_to_track != null:
+		if player_to_track.position.x < self.position.x:
+			tracking_direction = 0
+		else:
+			tracking_direction = 1
+		direction_setter(tracking_direction)
+		if tracking_direction == 0:
+			velocity.x = -10
+		else:
+			velocity.x = 10
+	else:
+		velocity.x = 0
 	if my_health <= 0:
 		$Dialogue.visible = false
 		$Body.disabled = true
@@ -120,6 +145,7 @@ func _process(_delta):
 				target._hited(my_damage)
 				attack_on = false
 	if my_health < int(max_health / 2):
+		tracking = true
 		var target = _raycast.get_collider()
 		var now = OS.get_ticks_msec()
 		if target != null and now >= my_attack_cooldown:
@@ -135,6 +161,7 @@ func _process(_delta):
 		if _animated_player.current_animation != "Idle":
 			_animated_player.connect("animation_finished",self,"IdleEnd")
 		UnHideSprite("Idle")
+	velocity = move_and_slide(velocity,Vector2.UP)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -155,11 +182,17 @@ func _on_Player_died():
 func _on_Zone_body_entered(body):
 	if body is KinematicBody2D:
 		if body.get_class() == "Player":
-			print("Track")
-			print(body.position.x)
-			print(self.position.x)
-			if body.position.x < self.position.x:
-				velocity.x -= 10
-			else:
-				velocity.x += 10
-	velocity = move_and_slide(velocity,Vector2.UP)
+			player_to_track = body
+			if my_health < int(max_health / 2):
+				tracking = true
+				if body.position.x < self.position.x:
+					tracking_direction = 0
+				else:
+					tracking_direction = 1
+
+
+func _on_Zone_body_shape_exited(body_id, body, body_shape, local_shape):
+	if body is KinematicBody2D:
+		if body.get_class() == "Player" and tracking:
+			player_to_track = null
+			tracking = false

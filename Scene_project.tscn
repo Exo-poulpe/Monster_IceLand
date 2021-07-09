@@ -357,14 +357,14 @@ animations = [ {
 "name": "End",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "Run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Stop",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Run",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
@@ -372,15 +372,15 @@ animations = [ {
 "name": "Hit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Death",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -397,17 +397,16 @@ animations = [ {
 radius = 10.1037
 height = 11.5046
 
-[sub_resource type="DynamicFontData" id=42]
+[sub_resource type="DynamicFontData" id=23]
 font_path = "res://Sprite/Font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=40]
+[sub_resource type="DynamicFont" id=24]
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = SubResource( 42 )
+font_data = SubResource( 23 )
 
-[sub_resource type="Animation" id=23]
-resource_name = "Air"
+[sub_resource type="Animation" id=25]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -423,7 +422,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=26]
 resource_name = "Attack"
 length = 0.3
 tracks/0/type = "value"
@@ -439,7 +438,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=27]
 resource_name = "Death"
 length = 0.5
 tracks/0/type = "value"
@@ -455,7 +454,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=28]
 resource_name = "GameOver"
 tracks/0/type = "value"
 tracks/0/path = NodePath("OverPanel/ColorRect:modulate")
@@ -494,7 +493,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=29]
 resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hit:frame")
@@ -509,8 +508,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=24]
-resource_name = "Idle"
+[sub_resource type="Animation" id=30]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -526,8 +524,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=25]
-resource_name = "Run"
+[sub_resource type="Animation" id=31]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -543,7 +540,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="AnimatedTexture" id=26]
+[sub_resource type="AnimatedTexture" id=32]
 flags = 4
 frames = 6
 frame_0/texture = ExtResource( 15 )
@@ -558,18 +555,18 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 13 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=27]
+[sub_resource type="AnimatedTexture" id=33]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 12 )
 frame_1/texture = ExtResource( 3 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=28]
+[sub_resource type="AnimatedTexture" id=34]
 flags = 4
 frame_0/texture = ExtResource( 2 )
 
-[sub_resource type="AnimatedTexture" id=39]
+[sub_resource type="AnimatedTexture" id=35]
 flags = 4
 frames = 4
 fps = 10.0
@@ -581,7 +578,7 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 43 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=44]
+[sub_resource type="AnimatedTexture" id=36]
 flags = 4
 frames = 7
 fps = 10.0
@@ -599,7 +596,7 @@ frame_5/delay_sec = 0.0
 frame_6/texture = ExtResource( 7 )
 frame_6/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=46]
+[sub_resource type="AnimatedTexture" id=37]
 flags = 4
 frames = 3
 frame_0/texture = ExtResource( 50 )
@@ -608,10 +605,9 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 48 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="CapsuleShape2D" id=29]
+[sub_resource type="CapsuleShape2D" id=38]
 
-[sub_resource type="Animation" id=30]
-resource_name = "Attack"
+[sub_resource type="Animation" id=39]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack:frame")
@@ -626,8 +622,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17 ]
 }
 
-[sub_resource type="Animation" id=31]
-resource_name = "Death"
+[sub_resource type="Animation" id=40]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Death:frame")
@@ -642,8 +637,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14, 14, 14 ]
 }
 
-[sub_resource type="Animation" id=32]
-resource_name = "End"
+[sub_resource type="Animation" id=41]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("End:frame")
@@ -658,8 +652,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=33]
-resource_name = "Hit"
+[sub_resource type="Animation" id=42]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hit:frame")
 tracks/0/interp = 1
@@ -673,8 +666,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7 ]
 }
 
-[sub_resource type="Animation" id=34]
-resource_name = "Idle"
+[sub_resource type="Animation" id=43]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Idle:frame")
@@ -689,20 +681,20 @@ tracks/0/keys = {
 "values": [ 1, 1, 2, 3, 4, 5, 10 ]
 }
 
-[sub_resource type="DynamicFontData" id=35]
+[sub_resource type="DynamicFontData" id=44]
 font_path = "res://Sprite/RPG/Fantasy_project/game/gui/font/CaslonAntique.ttf"
 
-[sub_resource type="DynamicFont" id=36]
+[sub_resource type="DynamicFont" id=45]
 size = 22
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = 2
 extra_spacing_char = 1
-font_data = SubResource( 35 )
+font_data = SubResource( 44 )
 
-[sub_resource type="Theme" id=37]
-default_font = SubResource( 36 )
+[sub_resource type="Theme" id=46]
+default_font = SubResource( 45 )
 
 [sub_resource type="CircleShape2D" id=47]
 
@@ -926,7 +918,7 @@ margin_top = 17.6381
 margin_right = 181.502
 margin_bottom = 39.6381
 rect_scale = Vector2( 1.11015, 0.151221 )
-custom_fonts/font = SubResource( 40 )
+custom_fonts/font = SubResource( 24 )
 text = "Game Over"
 align = 1
 valign = 1
@@ -948,42 +940,42 @@ enabled = true
 cast_to = Vector2( 15, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/Air = SubResource( 23 )
-anims/Attack = SubResource( 38 )
-anims/Death = SubResource( 43 )
-anims/GameOver = SubResource( 41 )
-anims/Hit = SubResource( 45 )
-anims/Idle = SubResource( 24 )
-anims/Run = SubResource( 25 )
+anims/Air = SubResource( 25 )
+anims/Attack = SubResource( 26 )
+anims/Death = SubResource( 27 )
+anims/GameOver = SubResource( 28 )
+anims/Hit = SubResource( 29 )
+anims/Idle = SubResource( 30 )
+anims/Run = SubResource( 31 )
 
 [node name="Run" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( -3.07102, 0.545471 )
-texture = SubResource( 26 )
+texture = SubResource( 32 )
 
 [node name="Idle" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( -0.132431, 1.19189 )
-texture = SubResource( 27 )
+texture = SubResource( 33 )
 
 [node name="Air" type="Sprite" parent="Player"]
 visible = false
-texture = SubResource( 28 )
+texture = SubResource( 34 )
 
 [node name="Attack" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( 1.45676, 4.63513 )
-texture = SubResource( 39 )
+texture = SubResource( 35 )
 
 [node name="Death" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( -0.66217, 1.32434 )
-texture = SubResource( 44 )
+texture = SubResource( 36 )
 
 [node name="Hit" type="Sprite" parent="Player"]
 visible = false
 position = Vector2( 0, 1.05948 )
-texture = SubResource( 46 )
+texture = SubResource( 37 )
 
 [node name="End" type="Sprite" parent="Player"]
 visible = false
@@ -1002,7 +994,7 @@ cooldown = 1000.0
 [node name="Body" type="CollisionShape2D" parent="Skeleton_tuto"]
 position = Vector2( 2.34534, 4.83499 )
 scale = Vector2( 0.80002, 0.651768 )
-shape = SubResource( 29 )
+shape = SubResource( 38 )
 
 [node name="Hit" type="Sprite" parent="Skeleton_tuto"]
 visible = false
@@ -1041,11 +1033,11 @@ hframes = 15
 frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton_tuto"]
-anims/Attack = SubResource( 30 )
-anims/Death = SubResource( 31 )
-anims/End = SubResource( 32 )
-anims/Hit = SubResource( 33 )
-anims/Idle = SubResource( 34 )
+anims/Attack = SubResource( 39 )
+anims/Death = SubResource( 40 )
+anims/End = SubResource( 41 )
+anims/Hit = SubResource( 42 )
+anims/Idle = SubResource( 43 )
 script = ExtResource( 42 )
 
 [node name="Dialogue" type="TextureRect" parent="Skeleton_tuto"]
@@ -1066,7 +1058,7 @@ margin_top = 68.8403
 margin_right = 785.869
 margin_bottom = 168.84
 rect_scale = Vector2( 2.77877, 1.84209 )
-theme = SubResource( 37 )
+theme = SubResource( 46 )
 text = "Frappe-moi pour gagner. Si tu me bats, tu gagnes des Exp, *clique gauche* pour taper"
 
 [node name="RayCast2D" type="RayCast2D" parent="Skeleton_tuto"]
@@ -1082,8 +1074,8 @@ shape = SubResource( 47 )
 [connection signal="Rush" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="Player" method="_on_Skill1_Rush"]
 [connection signal="mouse_entered" from="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" to="ParallaxBackground/GUI/H/MC/NinePatchRect/NinePatchRect/Skill1" method="_on_Skill1_mouse_entered"]
 [connection signal="died" from="Player" to="ParallaxBackground/GUI" method="_on_Player_died"]
-[connection signal="died" from="Player" to="Skeleton_tuto" method="_on_Player_died"]
 [connection signal="died" from="Player" to="Player" method="_on_Player_died"]
+[connection signal="died" from="Player" to="Skeleton_tuto" method="_on_Player_died"]
 [connection signal="exp_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_exp_up"]
 [connection signal="health_changed" from="Player" to="ParallaxBackground/GUI" method="_on_Player_health_changed"]
 [connection signal="level_up" from="Player" to="ParallaxBackground/GUI" method="_on_Player_level_up"]
@@ -1091,3 +1083,4 @@ shape = SubResource( 47 )
 [connection signal="animation_finished" from="Player/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Skeleton_tuto/AnimationPlayer" to="Skeleton_tuto" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Skeleton_tuto/Zone" to="Skeleton_tuto" method="_on_Zone_body_entered"]
+[connection signal="body_shape_exited" from="Skeleton_tuto/Zone" to="Skeleton_tuto" method="_on_Zone_body_shape_exited"]
