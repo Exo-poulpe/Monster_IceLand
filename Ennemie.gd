@@ -72,30 +72,42 @@ func UnHideSprite(name):
 		$Death.visible = false
 		$End.visible = false
 		$Attack.visible = false
+		$Run.visible = false
 	elif name == "Hit":
 		$Idle.visible = false
 		$Hit.visible = true
 		$Death.visible = false
 		$End.visible = false
 		$Attack.visible = false
+		$Run.visible = false
 	elif name == "Death":
 		$Idle.visible = false
 		$Hit.visible = false
 		$Death.visible = true
 		$End.visible = false
 		$Attack.visible = false
+		$Run.visible = false
 	elif name == "Attack":
 		$Idle.visible = false
 		$Hit.visible = false
 		$Death.visible = false
 		$End.visible = false
 		$Attack.visible = true
+		$Run.visible = false
 	elif name == "End":
 		$Idle.visible = false
 		$Hit.visible = false
 		$Death.visible = false
 		$End.visible = true
 		$Attack.visible = false
+		$Run.visible = false
+	elif name == "Run":
+		$Idle.visible = false
+		$Hit.visible = false
+		$Death.visible = false
+		$End.visible = false
+		$Attack.visible = false
+		$Run.visible = true
 
 
 func _hited(damage_value):
@@ -109,29 +121,23 @@ func direction_setter(direction):
 	if direction == 1:
 		$Idle.flip_h = false
 		$Attack.flip_h = false
+		$Hit.flip_h = false
+		$Death.flip_h = false
 		_raycast.cast_to.x *= -1
+		$Run.flip_h = false
 	else:
 		$Attack.flip_h = true
 		$Idle.flip_h = true
+		$Hit.flip_h = true
+		$Death.flip_h = true
 		_raycast.cast_to.x *= -1
+		$Run.flip_h = true
 
 func _process(_delta):
 	if mode == MODES.END:
 		return
-	if tracking and player_to_track != null:
-		if player_to_track.position.x < self.position.x:
-			tracking_direction = 0
-		else:
-			tracking_direction = 1
-		direction_setter(tracking_direction)
-		if tracking_direction == 0:
-			velocity.x = -10
-		else:
-			velocity.x = 10
-	else:
-		velocity.x = 0
+	
 	if my_health <= 0:
-		$Dialogue.visible = false
 		$Body.disabled = true
 		mode = MODES.DEAD
 		_animated_player.play("Death")
@@ -145,17 +151,32 @@ func _process(_delta):
 				target._hited(my_damage)
 				attack_on = false
 	if my_health < int(max_health / 2):
+		$Dialogue.visible = false
 		tracking = true
 		var target = _raycast.get_collider()
 		var now = OS.get_ticks_msec()
 		if target != null and now >= my_attack_cooldown:
 			mode = MODES.ATTACK
+			UnHideSprite("Attack")
 			_animated_player.play("Attack")
 			_animated_player.connect("animation_finished",self,"AttackEnd")
-			UnHideSprite("Attack")
 			attack_on = true
 			my_attack_cooldown = now + my_cooldown
 			return
+	if tracking and player_to_track != null and mode == MODES.RUN:
+		UnHideSprite("Run")
+		_animated_player.play("Run")
+		if player_to_track.position.x < self.position.x:
+			tracking_direction = 0
+		else:
+			tracking_direction = 1
+		direction_setter(tracking_direction)
+		if tracking_direction == 0:
+			velocity.x = -10
+		else:
+			velocity.x = 10
+	else:
+		velocity.x = 0
 	if mode == MODES.IDLE:
 		_animated_player.play("Idle")
 		if _animated_player.current_animation != "Idle":
@@ -172,7 +193,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	elif anim_name == "Idle":
 		mode = MODES.IDLE
 	elif anim_name == "Attack":
-		mode = MODES.IDLE
+		if my_health < int(max_health / 2):
+			mode = MODES.RUN
+		else:
+			mode = MODES.IDLE
 
 
 func _on_Player_died():
@@ -196,3 +220,5 @@ func _on_Zone_body_shape_exited(body_id, body, body_shape, local_shape):
 		if body.get_class() == "Player" and tracking:
 			player_to_track = null
 			tracking = false
+			UnHideSprite("Idle")
+			mode == MODES.IDLE
