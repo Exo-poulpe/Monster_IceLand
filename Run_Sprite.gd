@@ -30,7 +30,9 @@ export var attack_cooldown : float
 #export (int) var speed = 200
 export (int) var gravity = 300
 enum STATES {ALIVE, DEAD}
+enum MODES {IDLE,RUN,ATTACK,HIT,DEATH}
 var state = STATES.ALIVE
+var mode = MODES.IDLE
 var velocity = Vector2()
 #
 var next_time_damage = 0
@@ -136,11 +138,19 @@ func UnHideSprite(name):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Death":
 		_animated_player.stop()
+		mode = MODES.DEATH
 		UnHideSprite("GameOver")
 		_animated_player.play("GameOver")
 		_animated_player.connect("animation_finished",self,"GameOver")
 	elif anim_name == "GameOver":
 		_animated_player.stop()
+		mode = MODES.DEATH
+	elif anim_name == "Idle":
+		mode = MODES.IDLE
+	elif anim_name == "Attack":
+		mode = MODES.IDLE
+		UnHideSprite("Idle")
+		_animated_player.play("Idle")
 
 func _physics_process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -172,30 +182,20 @@ func take_damage(count):
 	emit_signal("health_changed", count)
 
 
-
 func get_input(_delta):
 	if state == STATES.DEAD:
 		return
-#	_animated_player.playback_speed = 1
-	if Input.is_key_pressed(KEY_Q):
-		my_experience += 1
 	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
 		velocity.x = 0;
+		mode = MODES.IDLE
 		UnHideSprite("Idle")
 		_animated_player.play("Idle")
+		_animated_player.connect("animation_finished",self,"IdleEnd")
 	if Input.is_key_pressed(KEY_SPACE) and is_on_floor():
 		_animated_sprite.play("Jump");
 		velocity.y = -250 * my_jump;
 		UnHideSprite("Air")
 		_animated_player.play("Air")
-	var now = OS.get_ticks_msec()
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and now > next_time_attack:
-		UnHideSprite("Attack")
-		_animated_player.play("Attack")
-		var target = _raycast.get_collider()
-		if target != null:
-				target._hited(my_damage)
-		next_time_attack = now + attack_cooldown
 	if Input.is_key_pressed(KEY_D):
 		direction_setter(0)
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
@@ -209,6 +209,16 @@ func get_input(_delta):
 			UnHideSprite("Air")
 			_animated_player.play("Air")
 		_raycast.cast_to = velocity.normalized() * 15
+	var now = OS.get_ticks_msec()
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and now > next_time_attack:
+		UnHideSprite("Attack")
+		_animated_player.play("Attack")
+		_animated_player.connect("animation_finished",self,"IdleEnd")
+		mode = MODES.ATTACK
+		var target = _raycast.get_collider()
+		if target != null:
+				target._hited(my_damage)
+		next_time_attack = now + attack_cooldown
 	if Input.is_key_pressed(KEY_A):
 		direction_setter(1)
 		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
@@ -223,14 +233,67 @@ func get_input(_delta):
 			UnHideSprite("Air")
 			_animated_player.play("Air")
 		
-	if Input.is_mouse_button_pressed(BUTTON_MIDDLE):
-		if Input.is_key_pressed(KEY_D):
-			velocity.x += 300
-		if Input.is_key_pressed(KEY_A):
-			velocity.x -= 300
-	
-	
 	velocity.y += gravity * _delta;
+	
+
+#func get_input(_delta):
+#	if state == STATES.DEAD:
+#		return
+##	_animated_player.playback_speed = 1
+#	if Input.is_key_pressed(KEY_Q):
+#		my_experience += 1
+#	if !Input.is_key_pressed(KEY_SPACE) and !Input.is_mouse_button_pressed(BUTTON_LEFT) and !Input.is_key_pressed(KEY_D) and !Input.is_key_pressed(KEY_A) and is_on_floor():
+#		velocity.x = 0;
+#		UnHideSprite("Idle")
+#		_animated_player.play("Idle")
+#	if Input.is_key_pressed(KEY_SPACE) and is_on_floor():
+#		_animated_sprite.play("Jump");
+#		velocity.y = -250 * my_jump;
+#		UnHideSprite("Air")
+#		_animated_player.play("Air")
+#	var now = OS.get_ticks_msec()
+#	if Input.is_mouse_button_pressed(BUTTON_LEFT) and now > next_time_attack:
+#		UnHideSprite("Attack")
+#		_animated_player.play("Attack")
+#		var target = _raycast.get_collider()
+#		if target != null:
+#				target._hited(my_damage)
+#		next_time_attack = now + attack_cooldown
+#	if Input.is_key_pressed(KEY_D):
+#		direction_setter(0)
+#		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
+#			velocity.x = 150 * my_speed;
+#		else:
+#			velocity.x = 150 * my_speed;
+#		if is_on_floor():
+#			UnHideSprite("Run")
+#			_animated_player.play("Run")
+#		else:
+#			UnHideSprite("Air")
+#			_animated_player.play("Air")
+#		_raycast.cast_to = velocity.normalized() * 15
+#	if Input.is_key_pressed(KEY_A):
+#		direction_setter(1)
+#		if Input.is_key_pressed(KEY_SHIFT) and is_on_floor():
+#			velocity.x = -150 * my_speed
+#		else:
+#			velocity.x = -150 * my_speed;
+#		_raycast.cast_to = velocity.normalized() * 15
+#		if is_on_floor():
+#			UnHideSprite("Run")
+#			_animated_player.play("Run")
+#		else:
+#			UnHideSprite("Air")
+#			_animated_player.play("Air")
+#
+#	if Input.is_mouse_button_pressed(BUTTON_MIDDLE):
+#		if Input.is_key_pressed(KEY_D):
+#			velocity.x += 300
+#		if Input.is_key_pressed(KEY_A):
+#			velocity.x -= 300
+#
+#
+#	velocity.y += gravity * _delta;
 
 			
 func direction_setter(direction):
